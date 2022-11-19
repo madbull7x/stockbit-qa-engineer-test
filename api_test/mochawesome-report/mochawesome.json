@@ -1,0 +1,177 @@
+{
+  "stats": {
+    "suites": 2,
+    "tests": 4,
+    "passes": 4,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-11-19T14:58:11.598Z",
+    "end": "2022-11-19T14:58:12.021Z",
+    "duration": 423,
+    "testsRegistered": 4,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "9a688161-5d4c-4d4a-be06-7b36733125ed",
+      "title": "",
+      "fullFile": "",
+      "file": "",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "28f84753-1bdf-421b-8063-35a3dd71d412",
+          "title": "Testing number of data",
+          "fullFile": "/Users/afrino/Documents/java/stockbit-qa-test/api_test/test/simple_test.js",
+          "file": "/test/simple_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "it should be match the request param",
+              "fullTitle": "Testing number of data it should be match the request param",
+              "timedOut": false,
+              "duration": 14,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "var _this = this\nconst numberOfData = [20, 5, 1]\nfor(const item of numberOfData) {\n    chai.request(URL)\n        .get(`/beers?page=2&per_page=${item}`)\n        .end((err, res) => {\n            expect(res.body).to.have.lengthOf(item)\n        })        \n    }\ndone()",
+              "err": {},
+              "uuid": "64367eec-4162-46fb-883f-7a8b6f1f5b33",
+              "parentUUID": "28f84753-1bdf-421b-8063-35a3dd71d412",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "64367eec-4162-46fb-883f-7a8b6f1f5b33"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 14,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        },
+        {
+          "uuid": "3bc521d4-f589-4c2d-8b51-c447cfedea26",
+          "title": "/beers",
+          "fullFile": "/Users/afrino/Documents/java/stockbit-qa-test/api_test/test/simple_test.js",
+          "file": "/test/simple_test.js",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "it should have beers schemas",
+              "fullTitle": "/beers it should have beers schemas",
+              "timedOut": false,
+              "duration": 158,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "chai.request(URL)\n    .get('/beers')\n    .end((err, res) => {\n        expect(res.body).to.be.jsonSchema(beerSchema)\n        done()\n    })",
+              "err": {},
+              "uuid": "21b1f51a-4358-42d8-b156-a21431dd61bf",
+              "parentUUID": "3bc521d4-f589-4c2d-8b51-c447cfedea26",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "it should return all beers data ",
+              "fullTitle": "/beers it should return all beers data ",
+              "timedOut": false,
+              "duration": 119,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "{\n  \"title\": \"amount of data\",\n  \"value\": 25\n}",
+              "code": "chai.request(URL)\n    .get('/beers')\n    .end((err, res) => {\n        expect(res.body).to.have.lengthOf.above(0)\n        console.info(`amount of data: ${res.body.length}`)\n        addContext(this, {\n            title: 'amount of data',\n            value: res.body.length\n        })\n        done()\n    })",
+              "err": {},
+              "uuid": "14e88f3b-2e7b-40eb-ad3e-06a6e9fa645d",
+              "parentUUID": "3bc521d4-f589-4c2d-8b51-c447cfedea26",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "return all name",
+              "fullTitle": "/beers return all name",
+              "timedOut": false,
+              "duration": 129,
+              "state": "passed",
+              "speed": "slow",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": "{\n  \"title\": \"returned name\",\n  \"value\": \"Buzz,Trashy Blonde,Berliner Weisse With Yuzu - B-Sides,Pilsen Lager,Avery Brown Dredge,Electric India,AB:12,Fake Lager,AB:07,Bramling X,Misspent Youth,Arcade Nation,Movember,Alpha Dog,Mixtape 8,Libertine Porter,AB:06,Russian Doll – India Pale Ale,Hello My Name Is Mette-Marit,Rabiator,Vice Bier,Devine Rebel (w/ Mikkeller),Storm,The End Of History,Bad Pixie\"\n}",
+              "code": "var name = []\nchai.request(URL)\n    .get('/beers')\n    .end((err, res) => {\n        for (item of res.body) {\n            name.push(item.name)\n        }\n        console.log(`returned name : ${name.join()}`)\n        addContext(this, {\n            title: 'returned name',\n            value: name.join()\n        })\n        done()\n    })",
+              "err": {},
+              "uuid": "80fbd0d6-2e1c-4f09-9fcd-6efc485f161a",
+              "parentUUID": "3bc521d4-f589-4c2d-8b51-c447cfedea26",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "21b1f51a-4358-42d8-b156-a21431dd61bf",
+            "14e88f3b-2e7b-40eb-ad3e-06a6e9fa645d",
+            "80fbd0d6-2e1c-4f09-9fcd-6efc485f161a"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 406,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "10.1.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.3"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.2.0"
+    }
+  }
+}
