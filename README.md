@@ -24,7 +24,9 @@ https://user-images.githubusercontent.com/61624268/202856241-6e485dbc-28bd-4dc1-
 1. File API test ada di directory api_test
 2. Video running
 
-https://user-images.githubusercontent.com/61624268/202856256-4e82af8a-b812-4b81-96c0-ed5c9dac1ac4.mp4
+
+https://user-images.githubusercontent.com/61624268/202873277-e9253b1c-6445-4204-bee6-b0087830d068.mp4
+
 
 
 #### Tools:
@@ -44,13 +46,15 @@ https://user-images.githubusercontent.com/61624268/202856256-4e82af8a-b812-4b81-
     npm i chai-http --save-dev
     npm i chai --save-dev
     npm i chai-json-schema --save-dev
-    npm i mochawesome --save-dev
+    npm i allure --save-dev
+    npm i mocha-allure-reporter --save-dev
     ```
 
 * untuk memudahkan eksekusi, tambahkan script test dalam package.json
     ```sh
     "scripts": {
-        "test": "mocha --reporter mochawesome"
+        "test": "mocha --reporter mocha-allure-reporter",
+        "report": "allure generate allure-results --clean -o allure-report && allure open allure-report"
     },
     ```
 
